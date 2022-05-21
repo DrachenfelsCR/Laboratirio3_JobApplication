@@ -6,10 +6,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".ui.ListJobApplication">
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true" app:srcCompat="@drawable/ic_baseline_add_circle_24"
+            android:id="@+id/fbAdd"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="6dp" app:layout_constraintBottom_toTopOf="@+id/listRecyclerView"
+            android:layout_marginEnd="16dp" app:layout_constraintVertical_bias="1.0"/>
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="409dp"
             android:layout_height="729dp"
-            android:id="@+id/listRecyclerView" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:id="@+id/listRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/svNombre" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.5"/>
+    <androidx.appcompat.widget.SearchView
+            android:layout_width="316dp"
+            android:layout_height="65dp"
+            android:id="@+id/svNombre"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fbAdd" android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="0.0"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,6 +37,7 @@ class Aplicantes_RecyclerViewAdapter(private var items: ArrayList<Aplicante>) : 
         holder.itemView.findViewById<ImageView>(R.id.iVfoto).setImageResource(item?.foto!!)
     }
 
+
     override fun getItemCount(): Int {
         // ?. es una llamada segura
         // !! es una llamada que permite null
@@ -44,7 +45,32 @@ class Aplicantes_RecyclerViewAdapter(private var items: ArrayList<Aplicante>) : 
     }
 
     override fun getFilter(): Filter {
-        TODO("Not yet implemented")
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()) {
+                    itemList = items
+                } else {
+                    val resultList = ArrayList<Aplicante>()
+                    for (row in items) {
+                        if (row.nombre.toLowerCase().contains(charSearch.toLowerCase())) {
+                            resultList.add(row)
+                        }
+                    }
+                    itemList = resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = itemList
+                return filterResults
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                itemList = results?.values as ArrayList<Aplicante>
+                notifyDataSetChanged()
+            }
+
+        }
     }
 
 }

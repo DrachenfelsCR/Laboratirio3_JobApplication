@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,11 +23,28 @@ class ListJobApplication : AppCompatActivity() {
     lateinit var aplicante: Aplicante
     var archived = ArrayList<Aplicante>()
 
+    override fun onResume(){
+        super.onResume()
+        getListOfAplicantes()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_job_application)
 
         lista = findViewById(R.id.listRecyclerView)
+
+        findViewById<SearchView>(R.id.svNombre).setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adaptador.filter.filter(newText)
+                return false
+            }
+        })
+
         getListOfAplicantes()
 
         val itemTouchHelperCallback =
