@@ -46,4 +46,13 @@ class Aplicantes private constructor() {
         aux.nombre = a.nombre
         aux.user = a.user
     }
+
+    fun loginP(user: String?, password: String?): Aplicante?{
+        for(a: Aplicante in aplicantes!!){
+            if(a.user.equals(user) && a.password.equals(password)){
+                return a
+            }
+        }
+        return null
+    }
 }
