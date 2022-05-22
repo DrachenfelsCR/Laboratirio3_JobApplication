@@ -1,6 +1,7 @@
 package com.example.laboratorio3.ui
 
 import android.util.Log
+import com.example.laboratorio3.R
 
 class Logins private constructor() {
 
@@ -8,7 +9,8 @@ class Logins private constructor() {
 
 
     init{
-
+        addPLogin(Login("willyrex", "123", "Aplicante"))
+        addPLogin(Login("faker", "123", "Admin"))
     }
 
     private object HOLDER {
@@ -23,6 +25,15 @@ class Logins private constructor() {
 
     fun addPLogin(login: Login){
         logins?.add(login)
+    }
+
+    fun userExist (user: String): Boolean{
+        for(l: Login in logins!!){
+            if(l.user.equals(user)){
+                return true
+            }
+        }
+        return false
     }
 
     fun login(user: String?, password: String?): Boolean{

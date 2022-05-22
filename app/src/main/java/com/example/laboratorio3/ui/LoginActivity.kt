@@ -20,6 +20,7 @@ class LoginActivity : AppCompatActivity() {
         var etPassword = findViewById<EditText>(R.id.etPassword)
         var btnLogin = findViewById<Button>(R.id.btnLogin)
         var btnClear = findViewById<Button>(R.id.btnClear)
+        var btnRegister = findViewById<Button>(R.id.btnRegister)
 
         btnClear.setOnClickListener {
             // clearing user_name and password edit text views on reset button click
@@ -27,13 +28,17 @@ class LoginActivity : AppCompatActivity() {
             etPassword.setText("")
         }
 
+        btnRegister.setOnClickListener {
+            val i = Intent(this, RegisterActivity::class.java)
+            startActivity(i)
+        }
         btnLogin.setOnClickListener {
             val user_name = etLoginNombre.text;
             val password = etPassword.text;
             if(logins.login(user_name.toString(), password.toString())){
                 val bundle = Bundle()
                 val LoginS = logins.loginP(user_name.toString(), password.toString())
-                val i = Intent(this, ListJobApplication::class.java)
+                val i = Intent(this, MainActivity::class.java)
                 i.putExtra("msg", "MENSAJE DE Login al Menú")
                 i.putExtra("Login", LoginS)
 //            i.putExtra("passw", password.toString())

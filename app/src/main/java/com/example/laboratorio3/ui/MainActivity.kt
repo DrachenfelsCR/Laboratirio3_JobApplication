@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -17,9 +18,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val user = intent.getSerializableExtra("Login") as Login
         //1. Paso
+        var tvLoggedUser= findViewById<TextView>(R.id.tvLoggedUser)
         var drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
         var navView = findViewById<NavigationView>(R.id.navView)
+
+        tvLoggedUser.text = user.user
         //2. Paso
         toggle = ActionBarDrawerToggle(this,drawerLayout , R.string.open, R.string.close)
         //3. Paso
