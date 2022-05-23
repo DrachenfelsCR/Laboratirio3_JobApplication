@@ -33,7 +33,11 @@ class Aplicantes_RecyclerViewAdapter(private var items: ArrayList<Aplicante>) : 
         //Aqui se asigna los valores a las vistas creadas en el recycler view
         // esto se hara basado en la posicion en el recycler view
         val item = itemList?.get(position)
-        holder.itemView.findViewById<TextView>(R.id.nombreAplicante)?.text = item?.nombre
+        holder.itemView.findViewById<TextView>(R.id.nombreAplicante)?.text = item?.firstName
+        holder.itemView.findViewById<TextView>(R.id.tvLastNameCard)?.text = item?.lastName
+        holder.itemView.findViewById<TextView>(R.id.tvCityCard)?.text = item?.city
+        holder.itemView.findViewById<TextView>(R.id.tvProvinceCard)?.text = item?.province
+        holder.itemView.findViewById<TextView>(R.id.tvPositionCard)?.text = item?.applyPosition
         holder.itemView.findViewById<ImageView>(R.id.iVfoto).setImageResource(item?.foto!!)
     }
 
@@ -53,7 +57,7 @@ class Aplicantes_RecyclerViewAdapter(private var items: ArrayList<Aplicante>) : 
                 } else {
                     val resultList = ArrayList<Aplicante>()
                     for (row in items) {
-                        if (row.nombre.toLowerCase().contains(charSearch.toLowerCase())) {
+                        if (row.firstName.toLowerCase().contains(charSearch.toLowerCase())) {
                             resultList.add(row)
                         }
                     }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -44,7 +45,10 @@ class ListJobApplication : AppCompatActivity() {
                 return false
             }
         })
-
+        val btnBack = findViewById<Button>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            finish()
+        }
         getListOfAplicantes()
 
         val itemTouchHelperCallback =
@@ -69,14 +73,25 @@ class ListJobApplication : AppCompatActivity() {
                     if (direction == ItemTouchHelper.LEFT) {
                         aplicante = Aplicante(
                             aplicantes.getAplicantes()[position].user,
-                            aplicantes.getAplicantes()[position].password,
-                            aplicantes.getAplicantes()[position].nombre,
+                            aplicantes.getAplicantes()[position].firstName,
+                            aplicantes.getAplicantes()[position].lastName,
+                            aplicantes.getAplicantes()[position].streetAddresOne,
+                            aplicantes.getAplicantes()[position].streetAddresTwo,
+                            aplicantes.getAplicantes()[position].city,
+                            aplicantes.getAplicantes()[position].province,
+                            aplicantes.getAplicantes()[position].zipcode,
+                            aplicantes.getAplicantes()[position].country,
+                            aplicantes.getAplicantes()[position].email,
+                            aplicantes.getAplicantes()[position].areacode,
+                            aplicantes.getAplicantes()[position].phone,
+                            aplicantes.getAplicantes()[position].applyPosition,
+                            aplicantes.getAplicantes()[position].startDate,
                             aplicantes.getAplicantes()[position].foto
                         )
                         aplicantes.deleteAplicante(position)
                         lista.adapter?.notifyItemRemoved(position)
 
-                        Snackbar.make(lista, aplicante.nombre + "Ha sido eliminado...", Snackbar.LENGTH_LONG)
+                        Snackbar.make(lista, aplicante.firstName + "Ha sido eliminado...", Snackbar.LENGTH_LONG)
                             .setAction("Undo") {
                                 aplicantes.getAplicantes().add(position, aplicante)
                                 lista.adapter?.notifyItemInserted(position)
@@ -86,22 +101,33 @@ class ListJobApplication : AppCompatActivity() {
                     } else {
                         aplicante = Aplicante(
                             aplicantes.getAplicantes()[position].user,
-                            aplicantes.getAplicantes()[position].password,
-                            aplicantes.getAplicantes()[position].nombre,
+                            aplicantes.getAplicantes()[position].firstName,
+                            aplicantes.getAplicantes()[position].lastName,
+                            aplicantes.getAplicantes()[position].streetAddresOne,
+                            aplicantes.getAplicantes()[position].streetAddresTwo,
+                            aplicantes.getAplicantes()[position].city,
+                            aplicantes.getAplicantes()[position].province,
+                            aplicantes.getAplicantes()[position].zipcode,
+                            aplicantes.getAplicantes()[position].country,
+                            aplicantes.getAplicantes()[position].email,
+                            aplicantes.getAplicantes()[position].areacode,
+                            aplicantes.getAplicantes()[position].phone,
+                            aplicantes.getAplicantes()[position].applyPosition,
+                            aplicantes.getAplicantes()[position].startDate,
                             aplicantes.getAplicantes()[position].foto
                         )
                         archived.add(aplicante)
 
-                        aplicantes.deleteAplicante(position)
+                       // aplicantes.deleteAplicante(position)
                         lista.adapter?.notifyItemRemoved(position)
 
-                        /* Este es el Intent que enviara a un formulario para editar al aplicante
-                   Intent(this@ListJobApplication,EditPersonActivity::class.java).also {
-                        it.putExtra("EXTRA_PERSONA",persona)
+                        // Este es el Intent que enviara a un formulario para editar al aplicante
+                   Intent(this@ListJobApplication,JobApplicationActivity::class.java).also {
+                        it.putExtra("USER_EXTRA",aplicante.user)
                         it.putExtra("EXTRA_POSITION",position)
                         startActivity(it)
-                    }*/
-                        Snackbar.make(lista, aplicante.nombre + "se editara...", Snackbar.LENGTH_LONG)
+                    }
+                        Snackbar.make(lista, aplicante.firstName + "se editara...", Snackbar.LENGTH_LONG)
                             .setAction("Undo") {
                                 archived.removeAt(archived.lastIndexOf(aplicante))
 

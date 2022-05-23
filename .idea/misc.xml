@@ -4,10 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/UNA/Laboratorio3/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.19166666666666668" />
-        <entry key="..\:/UNA/Laboratorio3/app/src/main/res/layout/activity_job_application.xml" value="0.33" />
+        <entry key="..\:/UNA/Laboratorio3/app/src/main/res/layout/activity_job_application.xml" value="0.25" />
         <entry key="..\:/UNA/Laboratorio3/app/src/main/res/layout/activity_list_job_application.xml" value="0.33" />
         <entry key="..\:/UNA/Laboratorio3/app/src/main/res/layout/activity_login.xml" value="0.28306159420289856" />
         <entry key="..\:/UNA/Laboratorio3/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/UNA/Laboratorio3/app/src/main/res/layout/activity_password_change.xml" value="0.21302083333333333" />
         <entry key="..\:/UNA/Laboratorio3/app/src/main/res/layout/activity_register.xml" value="0.3229166666666667" />
         <entry key="..\:/UNA/Laboratorio3/app/src/main/res/layout/nav_header.xml" value="0.5" />
         <entry key="..\:/UNA/Laboratorio3/app/src/main/res/layout/recycler_view_row.xml" value="0.33" />

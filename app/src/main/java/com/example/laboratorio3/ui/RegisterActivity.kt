@@ -18,15 +18,14 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(R.layout.activity_register)
 
         var etRegisterName = findViewById<EditText>(R.id.etRegisterName)
-        var etRegisterPassword = findViewById<EditText>(R.id.etRegisterName)
+        var etRegisterPassword = findViewById<EditText>(R.id.etRegisterPassword)
 
         var btnSubmitRegister = findViewById<Button>(R.id.btnSubmitRegister)
         var btnRegisterReturn = findViewById<Button>(R.id.btnRegisterReturn)
         var cbAdmin = findViewById<CheckBox>(R.id.cbAdmin)
 
         btnRegisterReturn.setOnClickListener{
-            val i = Intent(this, LoginActivity::class.java)
-            startActivity(i)
+            finish()
         }
 
         btnSubmitRegister.setOnClickListener{
@@ -38,15 +37,17 @@ class RegisterActivity : AppCompatActivity() {
                   Toast.makeText(applicationContext,"Este usuario ya existe", Toast.LENGTH_SHORT).show()
               }else{
                   if (cbAdmin.isChecked){
-                      logins.addPLogin(Login(etRegisterName.text.toString(),etRegisterPassword.text.toString(),"Admin" ))
+                      val newU = Login(etRegisterName.text.toString(),etRegisterPassword.text.toString(),"Admin" )
+                      logins.addPLogin(newU)
                       val i = Intent(this, MainActivity::class.java)
-                      i.putExtra("Login", Login(etRegisterName.text.toString(),etRegisterPassword.text.toString(),"Admin"))
+                      i.putExtra("Login",newU)
                       startActivity(i)
                   }
                   else{
-                      logins.addPLogin(Login(etRegisterName.text.toString(),etRegisterPassword.text.toString(),"Aplicante" ))
+                      val newU = Login(etRegisterName.text.toString(),etRegisterPassword.text.toString(),"Aplicante" )
+                      logins.addPLogin(newU)
                       val i = Intent(this, MainActivity::class.java)
-                      i.putExtra("Login", Login(etRegisterName.text.toString(),etRegisterPassword.text.toString(),"Aplicante"))
+                      i.putExtra("Login", newU)
                       startActivity(i)
                   }
               }

@@ -42,7 +42,9 @@ class LoginActivity : AppCompatActivity() {
                 i.putExtra("msg", "MENSAJE DE Login al Menú")
                 i.putExtra("Login", LoginS)
 //            i.putExtra("passw", password.toString())
-                // start your next activity
+                // start your next
+                etLoginNombre.setText("")
+                etPassword.setText("")
                 startActivity(i)
                 // your code to validate the user_name and password combination
                 // and verify the same

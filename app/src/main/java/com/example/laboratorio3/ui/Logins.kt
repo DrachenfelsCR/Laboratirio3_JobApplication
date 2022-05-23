@@ -10,7 +10,8 @@ class Logins private constructor() {
 
     init{
         addPLogin(Login("willyrex", "123", "Aplicante"))
-        addPLogin(Login("faker", "123", "Admin"))
+        addPLogin(Login("faker", "123", "Aplicante"))
+        addPLogin(Login("admin", "123", "Admin"))
     }
 
     private object HOLDER {
@@ -30,6 +31,16 @@ class Logins private constructor() {
     fun userExist (user: String): Boolean{
         for(l: Login in logins!!){
             if(l.user.equals(user)){
+                return true
+            }
+        }
+        return false
+    }
+
+    fun passChange (user: String, pass:String): Boolean{
+        for(l: Login in logins!!){
+            if(l.user.equals(user)){
+                l.password = pass
                 return true
             }
         }

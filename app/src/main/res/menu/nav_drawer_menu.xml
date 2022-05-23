@@ -6,4 +6,7 @@
 
     <item android:id="@+id/myJobApp"
           android:title="My Job Application"/>
+
+  <item android:id="@+id/passchange"
+        android:title="Change Password"/>
 </menu>
